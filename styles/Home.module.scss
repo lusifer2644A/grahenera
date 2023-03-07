@@ -1,0 +1,298 @@
+.herosection {
+  background-image: linear-gradient(
+      to top right,
+      #1e1e1e,
+      #1e1e1ecd,
+      #1e1e1ea1,
+      rgba(255, 255, 255, 0)
+    ),
+    url("/images/herobg.jpg");
+  height: 90vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // position: relative;
+  overflow-x: hidden;
+  padding: 2rem 8rem;
+  padding-top: 15rem;
+
+  .carheroimagebox {
+    position: absolute;
+    width: 35%;
+    min-width: 300px;
+    height: 400px;
+    left: 65%;
+    top: 55vh;
+    z-index: 110;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .content_area {
+  }
+}
+
+.bgimgtext {
+  background-image: radial-gradient(#1e1e1e, rgba(255, 255, 255, 0)),
+    url("/images/herotextbg.jpg");
+  min-height: 200px;
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.aboutSection {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+
+  .left {
+    max-width: 1000px;
+  }
+
+  .right {
+    max-width: 1000px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    h2 {
+      width: fit-content;
+      text-align: center;
+      padding-right: 10px;
+    }
+
+    p {
+      text-align: end;
+    }
+  }
+}
+
+.section1 {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.productList {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.benefitList {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px 30px;
+  max-width: 1200px;
+
+  .benefit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 15rem;
+
+    .benefitIcon {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 9999px;
+      border: 4px solid #da0037;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+      }
+    }
+
+    p {
+      text-align: center;
+      font-family: "Lato";
+    }
+  }
+}
+
+.reviewSection {
+  min-height: 500px;
+  width: 100vw;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url("/images/review.png");
+  // mix-blend-mode: luminosity;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 4rem 5rem;
+
+  .reviewContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4rem;
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+    }
+
+    .message {
+      width: 100%;
+      max-width: 600px;
+      min-width: 300px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10rem;
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      .currentbutton {
+        width: 80px;
+        height: 3px;
+        background-color: #da0037;
+        margin-bottom: 20px;
+      }
+      .normalbutton {
+        width: 80px;
+        height: 5px;
+        background-color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          height: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .herosection {
+    padding: 2rem 2rem;
+    padding-top: 15rem;
+
+    .carheroimagebox {
+      position: absolute;
+      width: 50%;
+      min-width: 300px;
+      height: 400px;
+      left: 50%;
+      top: 55vh;
+      z-index: 110;
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .content_area {
+    }
+  }
+
+  .reviewSection {
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    .reviewContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .info {
+      flex-wrap: wrap;
+    }
+
+    .actions {
+      margin-top: 5rem;
+
+      .buttons {
+        .currentbutton {
+          width: 40px;
+        }
+        .normalbutton {
+          width: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .herosection {
+    padding: 2rem 1rem;
+    padding-top: 8rem;
+    height: 80vh;
+
+    .carheroimagebox {
+      width: 50%;
+      min-width: 300px;
+      height: 400px;
+      left: 20%;
+      top: 45vh;
+    }
+
+    .content_area {
+    }
+  }
+
+  .bgimgtext {
+    padding: 2rem 1rem;
+  }
+
+  .aboutSection {
+    padding: 2rem 1rem;
+  }
+
+  .section1 {
+    padding: 2rem 1rem;
+  }
+
+  .benefitList {
+    .benefit {
+      width: 10rem;
+      width: 6rem;
+      .benefitIcon {
+        width: 6rem;
+        height: 6rem;
+        border: 2px solid #da0037;
+      }
+    }
+  }
+}

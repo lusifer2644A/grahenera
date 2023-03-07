@@ -1,0 +1,230 @@
+.navbarGlass {
+  background: linear-gradient(to bottom right, #f3f3f3a1, #d3d3d3a6) !important;
+  box-shadow: 0 8px 32px 0 #d92518a1 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.navbar1 {
+  width: 100vw;
+  height: 80px;
+
+  // background: linear-gradient(
+  //   to bottom right,
+  //   rgb(255 0 0 / 38%),
+  //   rgb(0 148 235 / 53%)
+  // );
+  background: rgba(14, 14, 14, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-bottom: 4px solid rgba(70, 70, 70, 0.305);
+  box-shadow: 0px 4px 17px rgba(217, 158, 101, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 57px;
+  position: fixed;
+  z-index: 10000;
+  font-family: "Poppins", sans-serif;
+  // transition: all 0.3s ease;
+  .nav_header_left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav_logo {
+    width: fit-content;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      // filter: drop-shadow(0px 0px 2px #fff);
+    }
+  }
+
+  .nav_links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+
+    .nav_link_items {
+      color: #ebebeb;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 125%;
+      transition: 0.3s ease;
+      padding: 10px 20px;
+      border-radius: 50px;
+      &:hover {
+        color: #bfbfbfde;
+      }
+    }
+  }
+}
+
+.button_1 {
+  background: #d92518;
+  border-radius: 24px;
+  color: white;
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  cursor: pointer;
+}
+.active_link {
+  color: #e3e3e3;
+  border-bottom: 2px solid #d92518;
+  line-height: 125%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 1450px) {
+  .nav_links {
+    gap: 10px !important;
+  }
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 1100px) {
+  .nav_logo {
+    // position: absolute;
+    // left: 5%;
+    // top: 50%;
+    // transform: translate(-5%, -50%);
+  }
+  // nav{
+  //     position: fixed;
+  //     z-index: 3;
+  // }
+  .hamburger {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 2;
+
+    .line {
+      width: 40px;
+      height: 2px;
+      background-color: #ffffff;
+      margin: 8px;
+      transition: all 0.7s ease;
+      animation-delay: 0.5s;
+    }
+  }
+
+  .nav_links {
+    position: fixed;
+    background: #131418;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    flex-direction: column !important;
+    clip-path: circle(50px at 90% -20%);
+    -webkit-clip-path: circle(50px at 90% -10%);
+    transition: 1s ease-out;
+    pointer-events: none;
+    z-index: -1;
+    justify-content: flex-start !important;
+    // margin-top: 80px;
+    padding-top: 80px;
+    gap: 30px !important;
+
+    div {
+      opacity: 0;
+      color: white !important;
+
+      &:nth-child(1) {
+        transition: all 0.5s ease 0.2s !important;
+      }
+      &:nth-child(2) {
+        transition: all 0.5s ease 0.4s !important;
+      }
+      &:nth-child(3) {
+        transition: all 0.5s ease 0.6s !important;
+      }
+      &:nth-child(4) {
+        transition: all 0.5s ease 0.7s !important;
+      }
+      &:nth-child(5) {
+        transition: all 0.5s ease 0.8s !important;
+      }
+      &:nth-child(6) {
+        transition: all 0.5s ease 0.9s !important;
+        margin: 0;
+      }
+      &:nth-child(7) {
+        transition: all 0.5s ease 1s !important;
+        margin: 0;
+      }
+    }
+
+    .fade {
+      opacity: 1;
+
+      a {
+        color: white;
+      }
+    }
+  }
+
+  .open {
+    clip-path: circle(2000px at 90% -10%);
+    -webkit-clip-path: circle(2000px at 90% -10%);
+    pointer-events: all;
+  }
+}
+/*Animating Hamburger Icon on Click*/
+.toggle {
+  .line {
+    background-color: white;
+  }
+  .line1 {
+    transform: rotate(-45deg) translate(-5px, 8px);
+  }
+  .line2 {
+    width: 0;
+  }
+  .line3 {
+    transform: rotate(45deg) translate(-5px, -8px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar1 {
+    height: 65px;
+    padding: 5px 10px;
+  }
+
+  .nav_logo {
+    height: 80% !important;
+  }
+
+  .line {
+    width: 30px;
+    height: 2px;
+    background-color: #ffffff;
+    margin: 5px;
+    transition: all 0.7s ease;
+    animation-delay: 0.5s;
+  }
+}

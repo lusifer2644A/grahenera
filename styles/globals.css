@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Racing+Sans+One&display=swap");
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-poppins: "Poppins", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-racing: "Racing Sans One", sans-serif;
+  --btn-primary-color: "#DA0037";
+  --btn-secondary-color: "#FFFFFF";
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#__next {
+  overflow-x: hidden;
+}
+
+/* typrography */
+
+.title-hero-anim {
+  font-family: var(--font-poppins);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 104px;
+  letter-spacing: 0.2151em;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: #da0037;
+  text-transform: uppercase;
+
+  color: white;
+  background: linear-gradient(
+    to left,
+    #79b9d3 16.51%,
+    #0e5a93 43.75%,
+    #0e5a93 43.75%,
+    #7fb0d5 59.9%,
+    #7fb0d5 59.9%,
+    #00518f 43.75%,
+    #00518f 43.75%,
+    #79b9d3 16.51%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 300% 300%;
+  animation: animation_grad 5s linear infinite;
+  -moz-animation: animation_grad 5s linear infinite;
+  -webkit-animation: animation_grad 5s linear infinite;
+}
+@keyframes animation_grad {
+  100% {
+    background-position: 300% 300%;
+  }
+}
+
+.title-hero2 {
+  font-family: "Racing Sans One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 50px;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    180deg,
+    rgba(233, 69, 96, 0.787),
+    #e94560 32.29%,
+    #da0037 73.96%,
+    #da0037 73.96%,
+    rgba(233, 69, 96, 0.689)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.main-heading {
+  font-family: var(--font-lato);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 58px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.0401em;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    180deg,
+    #6db5c8 3.65%,
+    #0e5a93 87.5%,
+    #1d4462 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #da0037;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  color: white;
+}
+
+.title-normal {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+
+  color: #ffffff;
+}
+
+.body {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: white;
+}
+
+.caption-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+.small-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #ffffff;
+}
+
+.bold {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.center {
+  text-align: center;
+}
+
+.italic {
+  font-style: italic;
+}
+.text-wrap {
+  max-width: 1000px;
+}
+
+/* margins */
+.mt-1 {
+  margin-top: 0.125rem;
+}
+.mt-2 {
+  margin-top: 0.25rem;
+}
+.mt-3 {
+  margin-top: 0.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 2rem;
+}
+.mt-6 {
+  margin-top: 3rem;
+}
+.mt-7 {
+  margin-top: 4rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .title-hero-anim {
+    font-size: 70px;
+    line-height: 80px;
+    letter-spacing: 0.2151em;
+    -webkit-text-stroke-width: 1.2px;
+  }
+
+  .title-hero2 {
+    font-size: 40px;
+    line-height: 45px;
+    letter-spacing: 0.055em;
+  }
+
+  .main-heading {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.0501em;
+  }
+
+  .subtitle {
+    font-weight: 500;
+    font-size: 26px;
+  }
+
+  .title-normal {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .body {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .caption-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .small-text {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .title-hero-anim {
+    font-size: 36px;
+    line-height: 54px;
+    letter-spacing: 0.2151em;
+    -webkit-text-stroke-width: 1.2px;
+  }
+
+  .title-hero2 {
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0.055em;
+  }
+
+  .main-heading {
+    font-size: 26px;
+    line-height: 32px;
+    letter-spacing: 0.0501em;
+  }
+
+  .subtitle {
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .title-normal {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .body {
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .caption-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .small-text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .title-hero-anim {
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.2151em;
+    -webkit-text-stroke-width: 1.2px;
+  }
+
+  .title-hero2 {
+    font-size: 26px;
+    line-height: 30px;
+    letter-spacing: 0.055em;
+  }
+
+  .main-heading {
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: 0.0501em;
+  }
+}
