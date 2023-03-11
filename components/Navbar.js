@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/Navbar.module.scss";
 import Link from "next/link";
 import logo from "../public/images/logo.png";
@@ -83,7 +83,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[0] = el)}
               >
-                <Link href="/dashboard">Home</Link>
+                <Link href="/">Home</Link>
               </p>
             ) : (
               <p
@@ -91,7 +91,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[0] = el)}
               >
-                <Link href="/dashboard">Home</Link>
+                <Link href="/">Home</Link>
               </p>
             )}
             {loc === 2 ? (
@@ -100,7 +100,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[1] = el)}
               >
-                <Link href="/all-tests">Products</Link>
+                <Link href="/all-products">Products</Link>
               </p>
             ) : (
               <p
@@ -108,7 +108,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[1] = el)}
               >
-                <Link href="/all-tests">Products</Link>
+                <Link href="/all-products">Products</Link>
               </p>
             )}
             {loc === 3 ? (

@@ -1,0 +1,36 @@
+/* loader */
+.loader_one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.loader_two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.loader_three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.loader_one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.loader_two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+  50% {
+    fill: #da0037;
+  }
+  100% {
+    fill: white;
+  }
+}

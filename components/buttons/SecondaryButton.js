@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SecondaryButton.module.scss";
 
 const SecondaryButton = (props) => {

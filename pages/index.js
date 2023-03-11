@@ -8,6 +8,7 @@ import ProductCard from "@/components/card/ProductCard";
 import { useEffect, useState } from "react";
 import NewsCard from "@/components/card/NewsCard";
 import Footer from "@/components/Footer";
+import { useRouter } from "next/router";
 
 const allProduct = [
   {
@@ -113,165 +114,176 @@ const news = [
   },
 ];
 
-const HeroSection = () => (
-  <div className={styles.herosection}>
-    <div className={styles.carheroimagebox}>
-      <img src="/images/car1.png" alt="" />
-    </div>
-    <div className={styles.content_area}>
-      <h1 className="title-hero-anim">Graphenera</h1>
-      <h2 className="subtitle mt-5">A Blend of Perfection & Protection</h2>
-      <h2 className="body mt-3">
-        One-Stop Solution to All Your Car Care Problems.
-      </h2>
-      <PrimaryButton name="Know More" />
-    </div>
-  </div>
-);
-
-const AboutSection = () => (
-  <div className={styles.aboutSection}>
-    <div className={styles.left}>
-      <h2 className="main-heading">Who we are?</h2>
-      <p className="body mt-5">
-        <span className="bold">Graphenera</span> is India’s leading{" "}
-        <span className="bold">car detailing service</span> and{" "}
-        <span className="bold">graphene coating service</span> brand that makes
-        a vehicle look superb through its premium range of products and
-        services.
-      </p>
-      <p className="body mt-4">
-        We <span className="bold">developed</span> the product & technology
-        <span className="bold"> in India</span> with a vision to shine and
-        protect the maximum number of vehicles possible.
-      </p>
-      <p className="body mt-4">
-        We have established ourselves firmly in the industry and expanded to{" "}
-        <span className="bold">65+ studios</span> all over India and the world.
-      </p>
-    </div>
-    <div className={styles.right}>
-      <h2 className="main-heading">What we do?</h2>
-      <p className="body mt-5">
-        We specialize in{" "}
-        <span className="bold">
-          washing, detailing, and car and bike coating{" "}
-        </span>
-        for vehicles such as{" "}
-        <span className="bold">
-          12H DNA Graphene Coating, Skin Restoration Service (SRS), 9H DNA
-          Absolute Nano Ceramic Coating, Paint Protection Film
-        </span>{" "}
-        to name a few.
-      </p>
-      <SecondaryButton name="Our Products" />
-    </div>
-  </div>
-);
-
-const ProductSection = () => (
-  <div className={styles.section1}>
-    <h2 className="main-heading">Featured Products</h2>
-    <p className="body center mt-4 text-wrap">
-      Our graphene is having exceptionally high quality compared to what
-      available in the market currently across the country and world wide. We
-      provide graphene in two forms mainly in powder and dispersed form in
-      acetone, water, DMF etc.
-    </p>
-    <div className={styles.productList}>
-      {allProduct.map((pr, index) => (
-        <ProductCard data={pr} idx={index} />
-      ))}
-    </div>
-  </div>
-);
-
-const BenefitSection = () => (
-  <div className={styles.section1}>
-    <h2 className="main-heading">What's your benefit</h2>
-    <p className="body center mt-4 text-wrap">
-      Our products and services are top-notch. Here are what you can expect from
-      us.
-    </p>
-    <div className={styles.benefitList}>
-      {benefits.map((b, index) => (
-        <div className={styles.benefit}>
-          <div className={styles.benefitIcon}>
-            <img src={`/images/icons/${b.img}`} alt="" />
-          </div>
-          <p className="body">{b.title}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const ReviewSection = ({ data, currentIndex, setIndex }) => (
-  <div className={styles.reviewSection}>
-    <div className={styles.reviewContent}>
-      <div className={styles.info}>
-        <span>
-          <p className="body uppercase" style={{ letterSpacing: "5px" }}>
-            {data.name}
-          </p>
-        </span>
-        <span>
-          <p className="body uppercase" style={{ letterSpacing: "5px" }}>
-            •
-          </p>
-        </span>
-        <span>
-          <p className="body uppercase" style={{ letterSpacing: "5px" }}>
-            {data.place}
-          </p>
-        </span>
-      </div>
-      <div className={styles.message}>
-        <p className="caption-text italic">{data.message}</p>
-      </div>
-    </div>
-    <div className={styles.actions}>
-      <div className={styles.buttons}>
-        {reviews.map((r, idx) => {
-          return (
-            <button
-              className={
-                idx === currentIndex
-                  ? styles.currentbutton
-                  : styles.normalbutton
-              }
-              onClick={() => {
-                setIndex(idx);
-              }}
-            ></button>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-);
-
-const NewsSection = ({ news }) => (
-  <div className={styles.section1}>
-    <h2 className="main-heading">News & Blogs</h2>
-    <p className="body center mt-4 text-wrap">
-      Checkout the blogs to get an idea about how to use the products.
-    </p>
-    <div className={styles.productList}>
-      {news.map((n, index) => (
-        <NewsCard data={n} idx={index} />
-      ))}
-    </div>
-  </div>
-);
-
-const BgText = ({ text, style }) => (
-  <div className={styles.bgimgtext} style={style}>
-    <p className="title-hero2 ">{text}</p>
-  </div>
-);
-
 export default function Home() {
+  const router = useRouter();
+
+  const HeroSection = () => (
+    <div className={styles.herosection}>
+      <div className={styles.carheroimagebox}>
+        <img src="/images/car1.png" alt="" />
+      </div>
+      <div className={styles.content_area}>
+        <div>
+          <h1 className="title-hero-anim">Graphene</h1>
+          <h1 className="title-hero-anim">Pro</h1>
+        </div>
+        <h2 className="subtitle mt-5">A Blend of Perfection & Protection</h2>
+        <h2 className="body mt-3">
+          One-Stop Solution to All Your Car Care Problems.
+        </h2>
+        <PrimaryButton name="Know More" />
+      </div>
+    </div>
+  );
+
+  const AboutSection = () => (
+    <div className={styles.aboutSection}>
+      <div className={styles.left}>
+        <h2 className="main-heading">Who we are?</h2>
+        <p className="body mt-5">
+          <span className="bold">Graphenera</span> is India’s leading{" "}
+          <span className="bold">car detailing service</span> and{" "}
+          <span className="bold">graphene coating service</span> brand that
+          makes a vehicle look superb through its premium range of products and
+          services.
+        </p>
+        <p className="body mt-4">
+          We <span className="bold">developed</span> the product & technology
+          <span className="bold"> in India</span> with a vision to shine and
+          protect the maximum number of vehicles possible.
+        </p>
+        <p className="body mt-4">
+          We have established ourselves firmly in the industry and expanded to{" "}
+          <span className="bold">65+ studios</span> all over India and the
+          world.
+        </p>
+      </div>
+      <div className={styles.right}>
+        <h2 className="main-heading">What we do?</h2>
+        <p className="body mt-5">
+          We specialize in{" "}
+          <span className="bold">
+            washing, detailing, and car and bike coating{" "}
+          </span>
+          for vehicles such as{" "}
+          <span className="bold">
+            12H DNA Graphene Coating, Skin Restoration Service (SRS), 9H DNA
+            Absolute Nano Ceramic Coating, Paint Protection Film
+          </span>{" "}
+          to name a few.
+        </p>
+        <SecondaryButton
+          name="Our Products"
+          onClick={() => {
+            router.push("/all-products");
+          }}
+        />
+      </div>
+    </div>
+  );
+
+  const ProductSection = () => (
+    <div className={styles.section1}>
+      <h2 className="main-heading">Featured Products</h2>
+      <p className="body center mt-4 text-wrap">
+        Our graphene is having exceptionally high quality compared to what
+        available in the market currently across the country and world wide. We
+        provide graphene in two forms mainly in powder and dispersed form in
+        acetone, water, DMF etc.
+      </p>
+      <div className={styles.productList}>
+        {allProduct.map((pr, index) => (
+          <ProductCard data={pr} idx={index} />
+        ))}
+      </div>
+    </div>
+  );
+
+  const BenefitSection = () => (
+    <div className={styles.section1}>
+      <h2 className="main-heading">What's your benefit</h2>
+      <p className="body center mt-4 text-wrap">
+        Our products and services are top-notch. Here are what you can expect
+        from us.
+      </p>
+      <div className={styles.benefitList}>
+        {benefits.map((b, index) => (
+          <div className={styles.benefit}>
+            <div className={styles.benefitIcon}>
+              <img src={`/images/icons/${b.img}`} alt="" />
+            </div>
+            <p className="body">{b.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const ReviewSection = ({ data, currentIndex, setIndex }) => (
+    <div className={styles.reviewSection}>
+      <div className={styles.reviewContent}>
+        <div className={styles.info}>
+          <span>
+            <p className="body uppercase" style={{ letterSpacing: "5px" }}>
+              {data.name}
+            </p>
+          </span>
+          <span>
+            <p className="body uppercase" style={{ letterSpacing: "5px" }}>
+              •
+            </p>
+          </span>
+          <span>
+            <p className="body uppercase" style={{ letterSpacing: "5px" }}>
+              {data.place}
+            </p>
+          </span>
+        </div>
+        <div className={styles.message}>
+          <p className="caption-text italic">{data.message}</p>
+        </div>
+      </div>
+      <div className={styles.actions}>
+        <div className={styles.buttons}>
+          {reviews.map((r, idx) => {
+            return (
+              <button
+                className={
+                  idx === currentIndex
+                    ? styles.currentbutton
+                    : styles.normalbutton
+                }
+                onClick={() => {
+                  setIndex(idx);
+                }}
+              ></button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+
+  const NewsSection = ({ news }) => (
+    <div className={styles.section1}>
+      <h2 className="main-heading">News & Blogs</h2>
+      <p className="body center mt-4 text-wrap">
+        Checkout the blogs to get an idea about how to use the products.
+      </p>
+      <div className={styles.productList}>
+        {news.map((n, index) => (
+          <NewsCard data={n} idx={index} />
+        ))}
+      </div>
+    </div>
+  );
+
+  const BgText = ({ text, style }) => (
+    <div className={styles.bgimgtext} style={style}>
+      <p className="title-hero2 ">{text}</p>
+    </div>
+  );
+
   const [reviewIndex, setReviewIndex] = useState(0);
   useEffect(() => {
     let interval = setInterval(() => {

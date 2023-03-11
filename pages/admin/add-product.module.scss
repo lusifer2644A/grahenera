@@ -1,0 +1,44 @@
+.addSection {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.product_details {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.productExtraDetails {
+  width: 100%;
+  max-width: 1000px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 7rem;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.points {
+  margin-left: 10px;
+  .point {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 1rem;
+  }
+}

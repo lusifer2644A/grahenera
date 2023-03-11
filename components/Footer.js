@@ -62,7 +62,8 @@ const Footer = () => {
       <div className={styles.bottom}>
         <span className={styles.left}>
           <p className="small-text">
-            © 2022 GRAPHENERA CARBON Pvt. Ltd. Copyrights and Rights Reserved
+            © 2023 GRAPHENERA CARBON Pvt. Ltd. Copyrights and All Rights
+            Reserved
           </p>
         </span>
         <span className={styles.right}>

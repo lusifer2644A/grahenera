@@ -6,13 +6,13 @@ const ProductCard = ({ data, idx }) => {
     <div className={styles.productCard}>
       <div className={styles.image}>
         <div className={styles.imageOverlay}></div>
-        <img src={data.img} alt="" />
+        <img src={data.main_image_url} alt="" />
       </div>
       <div className={styles.product_content}>
-        <p className="title-normal">{data.title}</p>
-        <p className="caption-text">{data.short_description}</p>
-        <Link href="#" className={styles.link}>
-          <p>KNOW MORE</p>
+        <p className="title-normal">{data.product_name}</p>
+        <p className="caption-text">{data.short_info}</p>
+        <Link href={`/admin/update-product/${data.id}`} className={styles.link}>
+          <p>UPDATE/SEE</p>
           <div className={styles.arrow}>
             <div className={styles.head}></div>
           </div>

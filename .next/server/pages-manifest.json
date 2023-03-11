@@ -2,5 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/admin/update-product/[product_id]": "pages/admin/update-product/[product_id].js",
+  "/admin/manage-products": "pages/admin/manage-products.js",
+  "/api/allproducts": "pages/api/allproducts.js",
+  "/api/fetchProduct": "pages/api/fetchProduct.js",
+  "/api/updateproduct": "pages/api/updateproduct.js"
 }
