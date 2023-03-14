@@ -15,16 +15,14 @@ const home = () => {
   const [loading, setLoading] = useState(false);
 
   const checkWarrenty = async () => {
+    setWarrentyDetails({});
     setLoading(true);
     try {
       const body = {
         serial_no: serialNoInput,
       };
       const res = await axios.post("/api/factory/checkSerial", body);
-      console.log(res);
-
       setWarrentyDetails(res.data);
-      toast.success(`Successfully fetched all products`);
     } catch (err) {
       console.log(err);
     }
@@ -37,15 +35,9 @@ const home = () => {
     success: "00c851",
   };
 
-  console.log(warrentyDetails);
-
   const currrent_date = new Date();
   const epoch_date = currrent_date.getTime();
-  console.log(
-    warrentyDetails?.data?.date_expiry,
-    epoch_date,
-    warrentyDetails?.data?.date_expiry < epoch_date
-  );
+
   const validWarrenty =
     warrentyDetails?.data?.date_expiry > new Date().getTime();
 

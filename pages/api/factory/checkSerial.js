@@ -19,12 +19,10 @@ export default async function func(req, res) {
     const dbRef = doc(db, `product_registration`, serial_no);
 
     const snap = await getDoc(dbRef);
-    console.log("snap", snap);
-
     const data = snap.data();
 
     if (!data) {
-      res.status(200).json({
+      return res.status(200).json({
         msg: `Serial Number not found`,
         status: 0,
       });
