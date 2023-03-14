@@ -19,7 +19,7 @@
 
   .generatebutton {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 0rem;
     max-width: 200px;
   }
 }
@@ -44,6 +44,29 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+    }
+  }
+}
+
+.productInfoSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: 4rem;
+  margin-top: 1rem;
+
+  .productInfo {
+    .productInfoRow {
+      display: flex;
+      flex-direction: row;
+      gap: 0.6rem;
+
+      h3 {
+      }
+
+      h1 {
+        font-weight: 600 !important;
       }
     }
   }

@@ -22,6 +22,7 @@ const home = () => {
         serial_no: serialNoInput,
       };
       const res = await axios.post("/api/factory/checkSerial", body);
+      console.log(res);
       setWarrentyDetails(res.data);
     } catch (err) {
       console.log(err);
@@ -37,6 +38,12 @@ const home = () => {
 
   const currrent_date = new Date();
   const epoch_date = currrent_date.getTime();
+
+  let date_added_read = new Date(warrentyDetails?.data?.date_added);
+  date_added_read = date_added_read.toLocaleDateString();
+
+  let date_expiru_read = new Date(warrentyDetails?.data?.date_expiry);
+  date_expiru_read = date_expiru_read.toLocaleDateString();
 
   const validWarrenty =
     warrentyDetails?.data?.date_expiry > new Date().getTime();
@@ -55,11 +62,11 @@ const home = () => {
         <div className="pageContainer">
           {loading && <Loader />}
           <div className={styles.productChooseContainer}>
-            <p className="subtitle">Enter Serial No.</p>
-            <p className="caption-text">
+            <h3 className="subtitle">Enter Serial No.</h3>
+            <h1 className="caption-text">
               Enter serial number of product for which warrenty need to be
               checked
-            </p>
+            </h1>
             <div className={styles.inputContainer}>
               <div className={styles.inputBox}>
                 <TextInput
@@ -71,72 +78,104 @@ const home = () => {
                   onChange={(e) => setSerialNoInput(e.target.value)}
                 />
               </div>
+              <div className={styles.generatebutton}>
+                <PrimaryButton name="Check" onClick={checkWarrenty}>
+                  Check
+                </PrimaryButton>
+              </div>
+
               {warrentyDetails && (
-                <div className={styles.warrenty_conditions}>
-                  {/* Invalid serial id */}
-                  {warrentyDetails.status === 0 ? (
-                    <div className={styles.statements}>
-                      <div className={styles.icon}>
-                        <img src={`/images/icons/error.png`} />
+                <div className={styles.productInfoSection}>
+                  {warrentyDetails.status !== 0 && (
+                    <div className={styles.productInfo}>
+                      <div className={styles.productInfoRow}>
+                        <h3 className="caption-text">Product Name:</h3>
+                        <h1 className="caption-text">
+                          {warrentyDetails?.data?.product_name}
+                        </h1>
                       </div>
-                      <p
-                        style={{ fontWeight: "500" }}
-                        className={`caption-text error`}
-                      >
-                        Serial Number not registered
-                      </p>
-                    </div>
-                  ) : (
-                    <div className={styles.statements}>
-                      <div className={styles.icon}>
-                        <img src={`/images/icons/success.png`} />
+                      <div className={styles.productInfoRow}>
+                        <h3 className="caption-text">Product Id:</h3>
+                        <h1 className="caption-text">
+                          {warrentyDetails?.data?.product_id}
+                        </h1>
                       </div>
-                      <p
-                        style={{ fontWeight: "500" }}
-                        className={`caption-text success`}
-                      >
-                        Registered serial number
-                      </p>
+                      <div className={styles.productInfoRow}>
+                        <h3 className="caption-text">Unit Serial No.:</h3>
+                        <h1 className="caption-text">
+                          {warrentyDetails?.data?.serial_no}
+                        </h1>
+                      </div>
+                      <div className={styles.productInfoRow}>
+                        <h3 className="caption-text">Manufacturing Date:</h3>
+                        <h1 className="caption-text">{date_added_read}</h1>
+                      </div>
+                      <div className={styles.productInfoRow}>
+                        <h3 className="caption-text">Expiry Date:</h3>
+                        <h1 className="caption-text">{date_expiru_read}</h1>
+                      </div>
                     </div>
                   )}
+                  <div className={styles.warrenty_conditions}>
+                    {/* Invalid serial id */}
+                    {warrentyDetails.status === 0 ? (
+                      <div className={styles.statements}>
+                        <div className={styles.icon}>
+                          <img src={`/images/icons/error.png`} />
+                        </div>
+                        <p
+                          style={{ fontWeight: "500" }}
+                          className={`caption-text error`}
+                        >
+                          Serial Number not registered
+                        </p>
+                      </div>
+                    ) : (
+                      <div className={styles.statements}>
+                        <div className={styles.icon}>
+                          <img src={`/images/icons/success.png`} />
+                        </div>
+                        <p
+                          style={{ fontWeight: "500" }}
+                          className={`caption-text success`}
+                        >
+                          Registered serial number
+                        </p>
+                      </div>
+                    )}
 
-                  {/* Valid serial id and valid warrenty*/}
-                  {warrentyDetails.status === 1 && validWarrenty && (
-                    <div className={styles.statements}>
-                      <div className={styles.icon}>
-                        <img src={`/images/icons/success.png`} />
+                    {/* Valid serial id and valid warrenty*/}
+                    {warrentyDetails.status === 1 && validWarrenty && (
+                      <div className={styles.statements}>
+                        <div className={styles.icon}>
+                          <img src={`/images/icons/success.png`} />
+                        </div>
+                        <p
+                          style={{ fontWeight: "500" }}
+                          className={`caption-text success`}
+                        >
+                          Warrenty Covered
+                        </p>
                       </div>
-                      <p
-                        style={{ fontWeight: "500" }}
-                        className={`caption-text success`}
-                      >
-                        Warrenty Covered
-                      </p>
-                    </div>
-                  )}
+                    )}
 
-                  {/* Valid serial id and invalid warrenty*/}
-                  {warrentyDetails.status === 1 && !validWarrenty && (
-                    <div className={styles.statements}>
-                      <div className={styles.icon}>
-                        <img src={`/images/icons/shield.png`} />
+                    {/* Valid serial id and invalid warrenty*/}
+                    {warrentyDetails.status === 1 && !validWarrenty && (
+                      <div className={styles.statements}>
+                        <div className={styles.icon}>
+                          <img src={`/images/icons/shield.png`} />
+                        </div>
+                        <p
+                          style={{ fontWeight: "500" }}
+                          className={`caption-text warning`}
+                        >
+                          Warrenty expired
+                        </p>
                       </div>
-                      <p
-                        style={{ fontWeight: "500" }}
-                        className={`caption-text warning`}
-                      >
-                        Warrenty expired
-                      </p>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               )}
-            </div>
-
-            <div className={styles.generatebutton}>
-              <PrimaryButton name="Check" onClick={checkWarrenty}>
-                Check
-              </PrimaryButton>
             </div>
           </div>
         </div>
