@@ -18,6 +18,7 @@ const addProduct = () => {
     short_info: "",
     main_image_url: "",
     price: "",
+    warrenty_tenure: 5,
   });
   const [productState, setProductState] = useState([]);
   const [ddState, setDDState] = useState();
@@ -268,6 +269,7 @@ const addProduct = () => {
     const data = {
       ...state,
       details: productState,
+      available: false,
     };
 
     setLoading(true);
@@ -327,6 +329,16 @@ const addProduct = () => {
             onChange={handleChange}
             error={formErrors.price}
             helperText={formErrors.price}
+          />
+          <TextInput
+            id="outlined-name"
+            label="Warrenty Time(in years)"
+            name="warrenty_tenure"
+            fullWidth={true}
+            value={state.warrenty_tenure}
+            onChange={handleChange}
+            error={formErrors.warrenty_tenure}
+            helperText={formErrors.warrenty_tenure}
           />
         </div>
         <div className={styles.productExtraDetails}>

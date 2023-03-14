@@ -1,0 +1,52 @@
+.container {
+  padding: 8rem 4rem;
+  font-family: "poppins", sans-serif;
+
+  .productChooseContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    .inputContainer {
+      width: 100%;
+      margin-top: 20px;
+
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 5rem;
+
+      .inputBox {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    .generatebutton {
+      width: 100%;
+      margin-top: 2rem;
+      max-width: 200px;
+    }
+  }
+
+  .generatedIdsTabs {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid #c4c4c4;
+  border-radius: 10px;
+  width: fit-content;
+
+  h3 {
+    color: orange;
+  }
+}

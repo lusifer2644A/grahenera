@@ -33,6 +33,11 @@ a {
   overflow-x: hidden;
 }
 
+.pageContainer {
+  padding: 8rem 4rem;
+  font-family: "poppins", sans-serif;
+}
+
 /* typrography */
 
 .title-hero {
@@ -219,7 +224,28 @@ a {
   max-width: 1000px;
 }
 
+/* colors */
+.success {
+  color: #00c851;
+}
+.warning {
+  color: #ffbb33;
+}
+.error {
+  color: #ff4444;
+}
+
 /* buttons */
+.secondary-button {
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #da0037;
+  border-radius: 9999px;
+  font-size: 15px;
+  color: #da0037;
+  cursor: pointer;
+  font-weight: 600;
+}
 .normal-button {
   background-color: transparent;
   padding: 0.5rem 1rem;
@@ -227,6 +253,16 @@ a {
   border-radius: 9999px;
   font-size: 15px;
   color: #da0037;
+  cursor: pointer;
+  font-weight: 600;
+}
+.primary-button {
+  background-color: #da0037;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #da0037;
+  border-radius: 9999px;
+  font-size: 15px;
+  color: #ffffff;
   cursor: pointer;
   font-weight: 600;
 }
