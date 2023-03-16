@@ -24,9 +24,9 @@ const Navbar = () => {
   useEffect(() => {
     var p = asPath;
     p = p.substring(1);
-    console.log(p);
+    // console.log(p);
     if (p.startsWith("dashboard")) setLoc(1);
-    if (p.startsWith("all-tests")) setLoc(2);
+    if (p.startsWith("tests")) setLoc(2);
     if (p.startsWith("create-test")) setLoc(3);
     if (p.startsWith("fundPerformance")) setLoc(4);
     if (p.startsWith("articles")) setLoc(5);
@@ -48,7 +48,7 @@ const Navbar = () => {
     hamburgerRef.current.classList.toggle(`${styles.toggle}`);
   };
 
-  console.log(loc);
+  // console.log(loc);
 
   let navStyles = [styles.navbar1];
 
@@ -100,7 +100,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[1] = el)}
               >
-                <Link href="/all-products">Products</Link>
+                <Link href="/products">Products</Link>
               </p>
             ) : (
               <p
@@ -108,7 +108,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[1] = el)}
               >
-                <Link href="/all-products">Products</Link>
+                <Link href="/products">Products</Link>
               </p>
             )}
             {loc === 3 ? (

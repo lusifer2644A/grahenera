@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ProductCard.module.scss";
 import Link from "next/link";
-const ProductCard = ({ data, idx }) => {
+const ProductCard = ({ data, idx, client = false }) => {
   return (
     <div className={styles.productCard}>
       <div className={styles.image}>
@@ -11,12 +11,24 @@ const ProductCard = ({ data, idx }) => {
       <div className={styles.product_content}>
         <p className="title-normal">{data.product_name}</p>
         <p className="caption-text">{data.short_info}</p>
-        <Link href={`/admin/update-product/${data.id}`} className={styles.link}>
-          <p>UPDATE/SEE</p>
-          <div className={styles.arrow}>
-            <div className={styles.head}></div>
-          </div>
-        </Link>
+        {client ? (
+          <Link href={`/products/${data.id}`} className={styles.link}>
+            <p>KNOW MORE</p>
+            <div className={styles.arrow}>
+              <div className={styles.head}></div>
+            </div>
+          </Link>
+        ) : (
+          <Link
+            href={`/admin/update-product/${data.id}`}
+            className={styles.link}
+          >
+            <p>UPDATE/SEE</p>
+            <div className={styles.arrow}>
+              <div className={styles.head}></div>
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import AdminNav from "@/components/AdminNav";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import Dropdown from "@/components/Dropdown/Dropdown";
 import TextArea from "@/components/inputs/TextArea";
 import TextInput from "@/components/inputs/TextInput";
 import Loader from "@/components/Loader/Loader";
@@ -9,6 +8,8 @@ import ProtectedRoute from "@/components/route/ProtectedRoute";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 import styles from "../add-product.module.scss";
 
@@ -19,11 +20,23 @@ const home = ({ query }) => {
     short_info: "",
     main_image_url: "",
     price: "",
+    warrenty_tenure: "",
   });
   const [productState, setProductState] = useState([]);
   const [ddState, setDDState] = useState();
   const [formErrors, setFormErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  let dropdown_options = [
+    "punchline",
+    "heading",
+    "subheading",
+    "subtitle",
+    "body",
+    "points",
+    "testreport",
+    "images",
+  ];
 
   useEffect(() => {
     fetchProduct();
@@ -43,6 +56,7 @@ const home = ({ query }) => {
         short_info: data.short_info,
         price: data.price,
         main_image_url: data.main_image_url,
+        warrenty_tenure: data.warrenty_tenure,
       });
       setProductState(data.details);
       toast.success(`Successfully fetched product ${state.product_name}`);
@@ -103,20 +117,16 @@ const home = ({ query }) => {
     return (
       <div className={styles.addSection}>
         <Dropdown
-          onSelect={(i) => {
-            setDDState(i);
+          options={dropdown_options}
+          onChange={(i) => {
+            setDDState(i.value);
           }}
-          list={[
-            "punchline",
-            "heading",
-            "subheading",
-            "subtitle",
-            "body",
-            "points",
-            "testreport",
-            "images",
-          ]}
-          current={ddState}
+          value={ddState}
+          placeholder="Select Item"
+          style={{
+            marginTop: "10rem",
+            width: "500px",
+          }}
         />
         <button
           onClick={() => {
@@ -208,6 +218,7 @@ const home = ({ query }) => {
         ];
       });
     }
+    toast.success(`Added ${type}`);
   };
 
   console.log(productState);
@@ -228,6 +239,11 @@ const home = ({ query }) => {
         return newArr;
       });
     }
+  };
+
+  const deletePoint = (idx) => {
+    const newArr = productState.filter((pr, id) => id !== idx);
+    setProductState(newArr);
   };
 
   const handleProductDetailChange = (e, idx) => {
@@ -307,13 +323,11 @@ const home = ({ query }) => {
       alert("Something went Wrong!");
     }
   };
-
   return (
     <ProtectedRoute>
       {loading && <Loader />}
       <AdminNav />
       <main className="main pt-7" style={{ paddingTop: "6rem" }}>
-        <AddSectionArea />
         <div className={styles.product_details}>
           <TextInput
             id="outlined-name"
@@ -355,6 +369,16 @@ const home = ({ query }) => {
             error={formErrors.price}
             helperText={formErrors.price}
           />
+          <TextInput
+            id="outlined-name"
+            label="Warrenty Time(in years)"
+            name="warrenty_tenure"
+            fullWidth={true}
+            value={state.warrenty_tenure}
+            onChange={handleChange}
+            error={formErrors.warrenty_tenure}
+            helperText={formErrors.warrenty_tenure}
+          />
         </div>
         <div className={styles.productExtraDetails}>
           <div>
@@ -366,13 +390,26 @@ const home = ({ query }) => {
               </p>
             )}
           </div>
+          <AddSectionArea />
           <div className={styles.productDetails}>
             {productState.map((ps, idx) => {
               return (
-                <>
-                  <p className="subtitle">
-                    {idx + 1}. {ps.type}
-                  </p>
+                <div>
+                  <div className={styles.productDetailsRowsHead}>
+                    <span className="subtitle">
+                      {idx + 1}. {ps.type}
+                    </span>
+                    <span>
+                      <button
+                        onClick={() => {
+                          deletePoint(idx);
+                        }}
+                        className="normal-button"
+                      >
+                        Delete
+                      </button>
+                    </span>
+                  </div>
                   {ps.type === "punchline" && (
                     <TextArea
                       id={ps.id}
@@ -509,12 +546,12 @@ const home = ({ query }) => {
                       />
                     </div>
                   )}
-                </>
+                </div>
               );
             })}
           </div>
           <div className={styles.submit}>
-            <PrimaryButton onClick={submitData} name="Update Data" />
+            <PrimaryButton onClick={submitData} name="Submit Data" />
           </div>
         </div>
       </main>

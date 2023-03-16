@@ -1,10 +1,10 @@
 import app from "../../config/firebase";
 import {
-  collection,
-  query,
-  where,
-  getDocs,
-  setDoc,
+  // collection,
+  // query,
+  // where,
+  // getDocs,
+  // setDoc,
   getFirestore,
   doc,
   getDoc,
@@ -17,7 +17,7 @@ export default async function getTestDetails(req, res) {
     const { product_id } = req.body;
 
     if (!product_id) {
-      res.status(400).json({
+      return res.status(400).json({
         msg: "Please send a valid Product ID!",
       });
     }
@@ -27,7 +27,8 @@ export default async function getTestDetails(req, res) {
     const snap = await getDoc(dbRef);
     const data = snap.data();
 
-    console.log("Recieved product data", product_id);
+    console.log("Recieved product data", product_id, data);
+
     res.status(200).json({
       msg: `Successfully fetched product data`,
       data: data,

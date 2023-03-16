@@ -15,8 +15,7 @@ const PageNav = ({ title }) => {
   const UrlParser = (url) => {
     url = window.location.href;
 
-    const path = router.pathname;
-
+    const path = router.asPath;
     const arr = path.split("/");
     arr.shift();
 

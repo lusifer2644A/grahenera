@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import NewsCard from "@/components/card/NewsCard";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const allProduct = [
   {
@@ -68,28 +69,28 @@ const reviews = [
     name: "Anshul Giri",
     place: "New Delhi",
     message:
-      "Well what do I say about Graphenera. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphenera  Studios that they brought back its beauty and shine and made me keep my love for longer.",
+      "Well what do I say about Graphene Pro. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphene Pro  Studios that they brought back its beauty and shine and made me keep my love for longer.",
   },
   {
     date: "",
     name: "Ankit Kumar Gupta",
     place: "Jharkhand",
     message:
-      "Well what do I say about Graphenera. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphenera  Studios that they brought back its beauty and shine and made me keep my love for longer.",
+      "Well what do I say about Graphene Pro. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphene Pro  Studios that they brought back its beauty and shine and made me keep my love for longer.",
   },
   {
     date: "",
     name: "Santu Kumar",
     place: "Bihar",
     message:
-      "Well what do I say about Graphenera. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphenera  Studios that they brought back its beauty and shine and made me keep my love for longer.",
+      "Well what do I say about Graphene Pro. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphene Pro  Studios that they brought back its beauty and shine and made me keep my love for longer.",
   },
   {
     date: "",
     name: "Venketashwara",
     place: "Tamil Nadu",
     message:
-      "Well what do I say about Graphenera. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphenera  Studios that they brought back its beauty and shine and made me keep my love for longer.",
+      "Well what do I say about Graphene Pro. My in-laws gifted me a Santro Xing about a decade back in marriage and I wanted to keep it with me forever. But its dullness and loss of paint was concerning me a lot. Thanks to Graphene Pro  Studios that they brought back its beauty and shine and made me keep my love for longer.",
   },
 ];
 
@@ -105,7 +106,7 @@ const news = [
   },
   {
     type: "news",
-    title: "Graphenera-Best Graphene Coating  Service  in Town.",
+    title: "Graphene Pro-Best Graphene Coating  Service  in Town.",
     short_description:
       "Ceramic gels are a great way to polish you car. Usage is simple...",
     date: "25/01/23",
@@ -116,6 +117,26 @@ const news = [
 
 export default function Home() {
   const router = useRouter();
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchAllProducts = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("/api/allproducts");
+      console.log(res);
+
+      setAllProducts(res.data.data);
+      toast.success(`Successfully fetched all products`);
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
 
   const HeroSection = () => (
     <div className={styles.herosection}>
@@ -141,7 +162,7 @@ export default function Home() {
       <div className={styles.left}>
         <h2 className="main-heading">Who we are?</h2>
         <p className="body mt-5">
-          <span className="bold">Graphenera</span> is India’s leading{" "}
+          <span className="bold">Graphene Pro</span> is India’s leading{" "}
           <span className="bold">car detailing service</span> and{" "}
           <span className="bold">graphene coating service</span> brand that
           makes a vehicle look superb through its premium range of products and
@@ -175,7 +196,7 @@ export default function Home() {
         <SecondaryButton
           name="Our Products"
           onClick={() => {
-            router.push("/all-products");
+            router.push("/products");
           }}
         />
       </div>
@@ -192,8 +213,8 @@ export default function Home() {
         acetone, water, DMF etc.
       </p>
       <div className={styles.productList}>
-        {allProduct.map((pr, index) => (
-          <ProductCard data={pr} idx={index} />
+        {allProducts.map((pr, index) => (
+          <ProductCard data={pr} idx={index} client={true} />
         ))}
       </div>
     </div>
@@ -300,7 +321,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Graphenera</title>
+        <title>Graphene Pro</title>
         <meta name="description" content="Generated by create next app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/logo_sm.png" />

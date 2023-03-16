@@ -313,6 +313,13 @@ a {
   padding-top: 4rem;
 }
 
+/* dropdown */
+.Dropdown-control {
+  background-color: #333 !important;
+  color: white !important;
+  border-color: #535353 !important;
+}
+
 @media screen and (max-width: 1200px) {
   .title-hero-anim {
     font-size: 70px;
@@ -362,6 +369,11 @@ a {
 }
 
 @media screen and (max-width: 600px) {
+  .pageContainer {
+    padding: 4rem 2rem;
+    font-family: "poppins", sans-serif;
+  }
+
   .title-hero-anim {
     font-size: 45px;
     line-height: 54px;

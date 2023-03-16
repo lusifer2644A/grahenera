@@ -1,13 +1,14 @@
 import AdminNav from "@/components/AdminNav";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import Dropdown from "@/components/Dropdown/Dropdown";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import TextArea from "@/components/inputs/TextArea";
 import TextInput from "@/components/inputs/TextInput";
 import Loader from "@/components/Loader/Loader";
 import ProtectedRoute from "@/components/route/ProtectedRoute";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import styles from "./add-product.module.scss";
@@ -24,6 +25,17 @@ const addProduct = () => {
   const [ddState, setDDState] = useState();
   const [formErrors, setFormErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  let dropdown_options = [
+    "punchline",
+    "heading",
+    "subheading",
+    "subtitle",
+    "body",
+    "points",
+    "testreport",
+    "images",
+  ];
 
   const dummy = [
     {
@@ -76,24 +88,22 @@ const addProduct = () => {
     },
   ];
 
+  console.log(ddState);
+
   const AddSectionArea = () => {
     return (
       <div className={styles.addSection}>
         <Dropdown
-          onSelect={(i) => {
-            setDDState(i);
+          options={dropdown_options}
+          onChange={(i) => {
+            setDDState(i.value);
           }}
-          list={[
-            "punchline",
-            "heading",
-            "subheading",
-            "subtitle",
-            "body",
-            "points",
-            "testreport",
-            "images",
-          ]}
-          current={ddState}
+          value={ddState}
+          placeholder="Select Item"
+          style={{
+            marginTop: "10rem",
+            width: "500px",
+          }}
         />
         <button
           onClick={() => {
@@ -165,6 +175,8 @@ const addProduct = () => {
         ];
       });
     }
+
+    toast.success(`Added ${type}`);
   };
 
   console.log(productState);
@@ -185,6 +197,11 @@ const addProduct = () => {
         return newArr;
       });
     }
+  };
+
+  const deletePoint = (idx) => {
+    const newArr = productState.filter((pr, id) => id !== idx);
+    setProductState(newArr);
   };
 
   const handleProductDetailChange = (e, idx) => {
@@ -288,7 +305,6 @@ const addProduct = () => {
       {loading && <Loader />}
       <AdminNav />
       <main className="main pt-7" style={{ paddingTop: "6rem" }}>
-        <AddSectionArea />
         <div className={styles.product_details}>
           <TextInput
             id="outlined-name"
@@ -351,13 +367,26 @@ const addProduct = () => {
               </p>
             )}
           </div>
+          <AddSectionArea />
           <div className={styles.productDetails}>
             {productState.map((ps, idx) => {
               return (
-                <>
-                  <p className="subtitle">
-                    {idx + 1}. {ps.type}
-                  </p>
+                <div>
+                  <div className={styles.productDetailsRowsHead}>
+                    <span className="subtitle">
+                      {idx + 1}. {ps.type}
+                    </span>
+                    <span>
+                      <button
+                        onClick={() => {
+                          deletePoint(idx);
+                        }}
+                        className="normal-button"
+                      >
+                        Delete
+                      </button>
+                    </span>
+                  </div>
                   {ps.type === "punchline" && (
                     <TextArea
                       id={ps.id}
@@ -494,7 +523,7 @@ const addProduct = () => {
                       />
                     </div>
                   )}
-                </>
+                </div>
               );
             })}
           </div>

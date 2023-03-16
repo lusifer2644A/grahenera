@@ -13,7 +13,7 @@ const Footer = () => {
             <img src="/images/logo.png" alt="" />
           </div>
           <div className={styles.company_mail}>
-            <p className="body">contact@graphenera.com</p>
+            <p className="body">contact@graphenepro.com</p>
           </div>
           <div className={styles.social}>
             <p className="title-normal">Stay Connected!</p>
@@ -62,8 +62,7 @@ const Footer = () => {
       <div className={styles.bottom}>
         <span className={styles.left}>
           <p className="small-text">
-            © 2023 GRAPHENERA CARBON Pvt. Ltd. Copyrights and All Rights
-            Reserved
+            © 2023 GRAPHENE PRO Copyrights and All Rights Reserved
           </p>
         </span>
         <span className={styles.right}>
