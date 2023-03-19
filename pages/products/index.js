@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/allProducts.module.scss";
 import ProductCard from "@/components/card/ProductCard";
 import axios from "axios";
+import Loader from "@/components/Loader/Loader";
 
 const allProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -39,6 +40,7 @@ const allProducts = () => {
       </Head>
       <main className="main">
         <Navbar />
+        {loading && <Loader />}
         <PageNav title="All Products" />
         <div className={styles.section1}>
           <div className={styles.productList}>

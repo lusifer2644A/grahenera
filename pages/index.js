@@ -152,7 +152,7 @@ export default function Home() {
         <h2 className="body mt-3">
           One-Stop Solution to All Your Car Care Problems.
         </h2>
-        <PrimaryButton name="Know More" />
+        {/* <PrimaryButton name="Know More" /> */}
       </div>
     </div>
   );

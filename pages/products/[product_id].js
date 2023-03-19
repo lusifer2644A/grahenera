@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Loader from "@/components/Loader/Loader";
 import Navbar from "@/components/Navbar";
 import PageNav from "@/components/pageNavigation/PageNav";
 import axios from "axios";
@@ -45,6 +46,7 @@ const home = ({ query }) => {
       <main className="main">
         <Navbar />
         <PageNav title={state.product_name} />
+        {loading && <Loader />}
         <div className="pageContainer">
           <div className={styles.productPageContainer}>
             <div className={styles.ImageSection}>

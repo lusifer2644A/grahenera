@@ -26,8 +26,8 @@ const Navbar = () => {
     p = p.substring(1);
     // console.log(p);
     if (p.startsWith("dashboard")) setLoc(1);
-    if (p.startsWith("tests")) setLoc(2);
-    if (p.startsWith("create-test")) setLoc(3);
+    if (p.startsWith("products")) setLoc(2);
+    if (p.startsWith("check-warranty")) setLoc(3);
     if (p.startsWith("fundPerformance")) setLoc(4);
     if (p.startsWith("articles")) setLoc(5);
 
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         <div className={styles.nav_links} ref={nav_links_ref}>
           <>
-            {loc === 1 ? (
+            {/* {loc === 1 ? (
               <p
                 className={styles.active_link}
                 onClick={onHamClick}
@@ -93,7 +93,7 @@ const Navbar = () => {
               >
                 <Link href="/">Home</Link>
               </p>
-            )}
+            )} */}
             {loc === 2 ? (
               <p
                 className={styles.active_link}
@@ -117,7 +117,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[2] = el)}
               >
-                <Link href="/create-test">Services</Link>
+                <Link href="/check-warranty">Check Warranty</Link>
               </p>
             ) : (
               <p
@@ -125,7 +125,7 @@ const Navbar = () => {
                 onClick={onHamClick}
                 ref={(el) => (li_ref.current[2] = el)}
               >
-                <Link href="/create-test">Services</Link>
+                <Link href="/check-warranty">Check Warranty</Link>
               </p>
             )}
 

@@ -39,17 +39,14 @@ const Footer = () => {
         {/* quick links */}
         <div className={styles.right}>
           <div className={styles.quick_links}>
-            <Link href="#" className={styles.link}>
+            <Link href="/" className={styles.link}>
               <p className="caption-text">Home</p>
             </Link>
-            <Link href="#" className={styles.link}>
-              <p className="caption-text">About Us</p>
-            </Link>
-            <Link href="#" className={styles.link}>
+            <Link href="/products" className={styles.link}>
               <p className="caption-text">Products</p>
             </Link>
-            <Link href="#" className={styles.link}>
-              <p className="caption-text">Services</p>
+            <Link href="/check-warranty" className={styles.link}>
+              <p className="caption-text">Check Warranty</p>
             </Link>
             <Link href="#" className={styles.link}>
               <p className="caption-text">Contact Us</p>

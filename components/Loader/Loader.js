@@ -31,7 +31,7 @@ const Loader = () => {
   };
 
   return (
-    <div className="loader_area" style={sstyles.loader_area}>
+    <div className="loader_area" style={sstyles.loader_area} scroll="no">
       <div className="loader_space" style={sstyles.loader_space}>
         <svg
           width="50px"
